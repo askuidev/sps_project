@@ -1,0 +1,124 @@
+{
+  "allocationData": [
+    {
+      "id": "1",
+      "adjustCash": true,
+      "symbol": "",
+      "description": "CASH",
+      "value": "5362000",
+      "currentPer": "98.510",
+      "targetPer": 2,
+      "targetPrice": "1197484.449",
+      "driftPer": "76.510",
+      "buySellPrice": "4164515.551",
+      "actionType": "",
+      "actionValue": ""
+    },
+    {
+      "id": "2",
+      "adjustCash": false,
+      "symbol": "FTBFX",
+      "description": "FIDELITY TOTAL BOND FUND",
+      "value": "8637.31",
+      "currentPer": "-0.074",
+      "targetPer": 22,
+      "targetPrice": "-2602037.329",
+      "driftPer": "-22.274",
+      "buySellPrice": "2610674.639",
+      "actionType": "Addition",
+      "actionValue": "321312"
+    },
+    {
+      "id": "3",
+      "adjustCash": false,
+      "symbol": "WFHY",
+      "description": "WISDOMTREE FNDMNTL BOND",
+      "value": "16955.34",
+      "currentPer": "-0.145",
+      "targetPer": "14",
+      "targetPrice": "-1640924.442",
+      "driftPer": "-14.145",
+      "buySellPrice": "1657879.782"
+    },
+    {
+      "id": "4",
+      "adjustCash": false,
+      "symbol": "ARCP",
+      "description": "AMERICAN REALTY CAP TRUST",
+      "value": "19999.96",
+      "currentPer": "19.45",
+      "targetPer": "36.26",
+      "targetPrice": "20565.65",
+      "driftPer": "(0.55)",
+      "buySellPrice": "565.6"
+    },
+    {
+      "id": "5",
+      "adjustCash": false,
+      "symbol": "BHOR",
+      "description": "BEHRINGER HARVARD OPP REIT",
+      "value": "14953.50",
+      "currentPer": "14.54",
+      "targetPer": "12.30",
+      "targetPrice": "20565.65",
+      "driftPer": "(5.46)",
+      "buySellPrice": "5612.06"
+    },
+    {
+      "id": "6",
+      "adjustCash": false,
+      "symbol": "JPM",
+      "description": "JPMORGAN CHASE CO",
+      "value": "10282.51",
+      "currentPer": "10.00",
+      "targetPer": "4.7",
+      "targetPrice": "822622",
+      "driftPer": "2",
+      "buySellPrice": "2056.29"
+    },
+    {
+      "id": "7",
+      "adjustCash": false,
+      "symbol": "MORN",
+      "description": "MORNINGSTAR INC",
+      "value": "10282.51",
+      "currentPer": "10.00",
+      "targetPer": "5.92",
+      "targetPrice": "7197.95",
+      "driftPer": "3",
+      "buySellPrice": "3084.56"
+    }
+  ],
+  "assetData": [
+    {
+      "color": "#83C7BA",
+      "assetClass": "CASH",
+      "difference": "5%"
+    },
+    {
+      "color": "#59036F",
+      "assetClass": "FIXED INCOME",
+      "difference": "5%"
+    },
+    {
+      "color": "#025B97",
+      "assetClass": "EQUITY",
+      "difference": "(4)%"
+    },
+    {
+      "color": "#FF9800",
+      "assetClass": "ALTERNATIVES",
+      "difference": "8%"
+    },
+    {
+      "color": "#A21E21",
+      "assetClass": "DERIVATIVES",
+      "difference": "-"
+    },
+    {
+      "color": "#4D4E53",
+      "assetClass": "OTHER",
+      "difference": "-"
+    }
+  ]
+}

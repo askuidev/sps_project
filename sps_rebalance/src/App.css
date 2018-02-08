@@ -1,0 +1,516 @@
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+*:focus {
+  outline: none !important;
+}
+html, body {
+  font-family: 'ITCFranklinGothic-Book', sans-serif;
+}
+.allocationPanel {
+  border-radius: 0;
+  border: 0;
+  border-top: 4px solid #4f86ca;
+  background-color: #f6f6f6;
+  box-shadow: none;
+}
+.allocationPanel .panel-heading {
+  background-color: #e9e9e9;
+  padding-left: 0;
+  border: 0;
+}
+.allocationPanel .panel-heading .main-heading {
+  margin-bottom: 20px;
+}
+.differenceAllocationPanel .panel-heading .sub-heading {
+  padding: 5px;
+}
+.allocationPanel .panel-heading .panel-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+.allocationPanel .panel-body {
+  padding: 0;
+  background-color: #e9e9e9;
+}
+.securityTargetPanel {
+  margin-right: 18px;
+}
+
+.allocationPanelContainer .button-group .btn {
+  margin-left: 5px;
+}
+.allocationPanelContainer .button-group .btn.focus,
+.allocationPanelContainer .button-group .btn:focus{
+  box-shadow: none;
+}
+.allocationPanelContainer .button-group .btn:first-child {
+  margin-left: 0;
+}
+.allocationPanelContainer .button-group .grouped .btn {
+  margin-left: 0;
+}
+.allocationPanelContainer .button-group .btn:not([disabled]):not(.disabled).active {
+  box-shadow: none !important;
+}
+.allocationTableContainer .rebalanceDetailForm .formContainer {
+  padding: 20px;
+}
+.allocationTableContainer .target-price-input {
+  width: 75px !important;
+  text-align: center;
+  padding: 2px;
+  border-radius: 12px;
+  border-color: #999 !important;
+  display: inline-block;
+}
+.allocationTableContainer .target-percent-input {
+  width: 50px !important;
+  text-align: center;
+  padding: 2px;
+  border-radius: 12px;
+  border-color: #999 !important;
+  display: inline-block;
+}
+.allocationTableContainer .allocationSearchInput .input-group-addon {
+  background-color: transparent;
+  border-right: 0;
+  padding: 0;
+}
+.allocationTableContainer .allocationSearchInput .form-control {
+  padding: 2px;
+  border-radius: 2px;
+  border-color: #999 !important;
+  display: inline-block;
+}
+.allocationTableContainer .allocationSearchInput .custom-icon {
+  font-size: 32px;
+  color: #999;
+  position: relative;
+  left: 2px;
+  top: 2px;
+}
+.allocationTableContainer .table-custom {
+  border-collapse: initial;
+}
+.allocationTableContainer .table-custom td {
+  vertical-align: middle;
+  padding: 5px;
+}
+.allocationTableContainer .table-striped.table-custom tbody tr,
+.allocationTableContainer .table-striped.table-custom tfoot tr {
+  background-color: #fff;
+}
+.allocationTableContainer .table-striped.table-custom tbody tr:nth-of-type(odd),
+.allocationTableContainer .table-striped.table-custom tfoot tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+.allocationTableContainer .table-custom thead td {
+  background-color: transparent;
+  font-weight: bold;
+}
+.allocationTableContainer .table-custom tbody td {
+  text-transform: uppercase;
+}
+.allocationTableContainer .table-custom tbody td,
+.allocationTableContainer .table-custom tfoot td {
+  border-bottom: 1px solid #bbb;
+  border-top: none;
+}
+.allocationTableContainer .table-custom tbody tr:first-child td {
+  border-top: 1px solid #bbb;
+}
+.allocationTableContainer .table-custom tbody td:first-child,
+.allocationTableContainer .table-custom tfoot td:first-child {
+  border-left: 1px solid #bbb;
+}
+.allocationTableContainer .table-custom tbody td:last-child,
+.allocationTableContainer .table-custom tfoot td:last-child {
+  border-right: 1px solid #bbb;
+}
+.allocationTableContainer .table-custom .table-footer-cell-padding {
+  padding: 13px;
+  padding-left: 5px;
+}
+.allocationTableContainer .differenceAllocationTableContainer td {
+  font-size: 14px;
+}
+.allocationPanelContainer {
+  padding: 20px;
+  background-color: #e9e9e9;
+  overflow: hidden;
+}
+.allocationPanelContainer .DifferenceAllocationTableeckbox {
+  top: 18px !important;
+  margin-right: 1.5em;
+}
+.allocationPanelContainer .custom-checkbox {
+  margin-left: 3px;
+}
+.allocationPanelContainer .custom-checkbox .state .icon {
+  color: #666;
+}
+.allocationTableContainer .formContainer {
+  overflow: auto;
+  padding: 20px;
+}
+.allocationTableContainer .formContainer .table-transparent tr {
+  background-color: transparent;
+}
+.allocationTableContainer .advancedSearchLink {
+  padding: 6px;
+}
+.allocationTableContainer .adjustCashLink {
+  text-transform: capitalize;
+}
+.allocationTableContainer .targetAllocationTableControls .btn {
+  margin-left: 5px;
+}
+.allocationTableContainer .targetAllocationTableControls .remove-security-btn,
+.allocationTableContainer .targetAllocationTableControls .save-btn {
+  border-color: #4f86ca !important;
+}
+.allocationTableContainer .targetAllocationTableControls .cancel-btn {
+  border-color: #4f86ca !important;
+}
+
+/* Modal */
+.adjustCashModal .modal-content {
+  border-radius: 0;
+}
+.adjustCashForm label{
+  padding-left: 0;
+}
+.adjustCashForm .clearIcon {
+  font-size: 20px;
+}
+.adjustCashForm .clearText {
+  font-size: 14px;
+  position: relative;
+  top: 1px;
+  left: 2px;
+}
+.adjustCashForm .btn-transparent:hover,
+.adjustCashForm .btn-transparent:focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* React Draggable */
+.react-draggable, .cursor {
+  cursor: move;
+}
+.no-cursor {
+  cursor: auto;
+}
+.cursor-y {
+  cursor: ns-resize;
+}
+.cursor-x {
+  cursor: ew-resize;
+}
+
+/* react-modal2 */
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+
+  background: white;
+  border-radius: 4px;
+
+  outline: none;
+}
+
+.modal h1 {
+  margin-top: 0;
+}
+
+/**
+ * Animations
+ */
+
+/**
+ * Backdrop
+ */
+
+.modal-appear.modal-backdrop,
+.modal-enter.modal-backdrop,
+.modal-leave.modal-leave-active.modal-backdrop {
+  background: transparent;
+}
+
+.modal-appear.modal-appear-active.modal-backdrop,
+.modal-enter.modal-enter-active.modal-backdrop,
+.modal-leave.modal-backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-appear-active.modal-backdrop,
+.modal-enter-active.modal-backdrop,
+.modal-leave-active.modal-backdrop {
+  transition: background 200ms ease-in;
+}
+
+/**
+ * Modal
+ */
+
+.modal-appear .modal,
+.modal-enter .modal,
+.modal-leave.modal-leave-active .modal {
+  opacity: 0;
+  transform: translate(0, -100%);
+}
+
+.modal-appear.modal-appear-active .modal,
+.modal-enter.modal-enter-active .modal,
+.modal-leave .modal {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.modal-appear-active .modal,
+.modal-enter-active .modal,
+.modal-leave-active .modal {
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.reactmodal2-custom {
+  padding: 0;
+}
+.reactmodal2-custom .reactmodal2-header h1 {
+  margin-bottom: 0 !important;
+}
+.reactmodal2-custom .reactmodal2-header {
+  padding: 10px 20px;
+}
+.reactmodal2-custom .reactmodal2-content {
+  padding: 0 20px;
+}
+.reactmodal2-custom .reactmodal2-footer {
+  padding: 20px 20px;
+}
+/* form */
+.form-horizontal .form-group {
+  margin: 20px 0;
+}
+
+/* common */
+.width-100 {
+  width: 100%;
+}
+.width-90 {
+  width: 90%;
+}
+.width-80 {
+  width: 80%;
+}
+.width-70 {
+  width: 70%;
+}
+.width-60 {
+  width: 60%;
+}
+.width-50 {
+  width: 50%;
+}
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+.text-center {
+  text-align: center;
+}
+.custom-link {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+.clearfix {
+  overflow: auto;
+}
+.font-weight-normal {
+  font-weight: normal;
+}
+.fixed-table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+.btn-transparent {
+  background-color: transparent;
+  border-color: transparent;
+}
+.btn-transparent:focus,
+.btn-transparent:hover {
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+.btn-light-white:not([disabled]):not(.disabled).active,
+.btn-light-white:not([disabled]):not(.disabled):hover {
+  color: #333333;
+  background-color: #D4D4D4;
+  border-color: #CCCCCC;
+}
+.btn-light-blue {
+  background-color: #FFF;
+  border-color: #0b89af;
+  color: #0b89af;
+  font-weight: normal;
+}
+.btn-light-blue.active {
+  background-color: #4f86ca;
+  color: #FFFFFF;
+  box-shadow: none;
+}
+.btn-light-blue:hover,
+.btn-light-blue.active:hover {
+  background-color: #5491dc;
+  border-color: #0b89af;
+  color: #FFFFFF;
+  box-shadow: none;
+}
+.btn-slate-blue {
+  background-color: #FFFFFF;
+  border-color: #7B68EE;
+  color: #7B68EE;
+}
+.btn-slate-blue.active,
+.btn-slate-blue.active:hover,
+.btn-slate-blue.active:focus,
+.btn-slate-blue:hover {
+  background-color: #7B68EE;
+  border-color: #7B68EE;
+  color: #FFFFFF;
+  box-shadow: none;
+}
+.btn-slate-blue.disabled,
+.btn-slate-blue.disabled:hover,
+.btn-slate-blue.disabled:focus,
+.btn-slate-blue.active.disabled:hover {
+  opacity: .65;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  box-shadow: none;
+}
+.btn-light-white {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-color: #CCCCCC;
+}
+.border-light-blue {
+  border-color: #4f86ca;
+}
+.color-light-blue {
+  color: #4f86ca;
+}
+.color-slate-blue {
+  color: #7B68EE !important;
+}
+.bg-slate-blue {
+  background-color: #7B68EE !important;
+}
+.bg-light-grey {
+  background-color: #777777;
+}
+.bg-light-cyan {
+  background-color: #83C7BA;
+}
+.bg-dark-voilet {
+  background-color: #59036F;
+}
+.bg-dark-blue {
+  background-color: #4f86ca;
+}
+.bg-dark-orange {
+  background-color: #FF9800;
+}
+.bg-dark-red {
+  background-color: #A21E21;
+}
+.bg-dark-grey {
+  background-color: #4D4E53;
+}
+.bg-light-white {
+  background-color: #D8D8D8;
+}
+.bg-white {
+  background-color: #F5F5F5;
+}
+.bg-grey {
+  background-color: #808080;
+}
+.bg-transparent {
+  background-color: transparent !important;
+}
+.no-border-radius {
+  border-radius: 0;
+}
+.no-padding {
+  padding: 0 !important;
+}
+.no-margin {
+  margin: 0 !important;
+}
+.no-border-tr td {
+  border: 0 !important;
+}
+.abs-top-right {
+  position: relative;
+}
+.abs-top-right > .abs-top-child{
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+.width-100 {
+  width: 100%;
+}
+.square20 {
+  display: table;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+}
+.square30 {
+  display: table;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+}
+.square40 {
+  display: table;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+.square45 {
+  display: table;
+  padding: 0;
+  width: 45px;
+  height: 45px;
+}
+.square50 {
+  display: table;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+}
