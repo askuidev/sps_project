@@ -10,7 +10,6 @@ import thunk from 'redux-thunk';
 let initialState = {
     allocationData: [],
     assetData: [],
-    allocationId: '',
     showAdjustCashModal: false,
     adjustCashData: {
         actionType: '',
@@ -32,7 +31,7 @@ const reducer = (state: InitialStateProps = initialState, action: Action) => {
             const calculatedData = doAllCalculations(allocData);
             state = Object.assign({}, state, { allocationData: calculatedData });
             break;
-        case Actions.UPDATE_ALLOCATION_DATA:
+        case Actions.UPDATE_ALLOCATION_DATA_SUCCESS:
             /**
              * this case will execute once
              * the [GET] request for [allocationData] api got success
@@ -40,7 +39,21 @@ const reducer = (state: InitialStateProps = initialState, action: Action) => {
              *
              * @returns {object}  - state object with allocationData
              */
-            state = Object.assign({}, state, { allocationData: action.payload });
+            const updatedAllocationData = action.payload;
+            const calculatedUpdatedData = doAllCalculations(updatedAllocationData);
+            state = Object.assign({}, state, { allocationData: calculatedUpdatedData });
+            break;
+        case Actions.UPDATE_ALLOCATION_TARGET_DATA_SUCCESS:
+            /**
+             * this case will execute once
+             * the [GET] request for [allocationData] api got success
+             * @param action.payload.data will contain the response from the api
+             *
+             * @returns {object}  - state object with allocationData
+             */
+            const updatedAllocationTargetData = action.payload;
+            const calculatedUpdatedTargetData = doAllCalculations(updatedAllocationTargetData);
+            state = Object.assign({}, state, { allocationData: calculatedUpdatedTargetData });
             break;
         case Actions.GET_ASSET_DATA_SUCCESS:
             /**

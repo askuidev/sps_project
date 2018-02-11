@@ -1,7 +1,7 @@
 import * as React from 'react';
 const { Icon } = require('react-fa');
 import {
-    getStyle
+  getStyle
 } from '../../../utils';
 
 class TableHeader extends React.Component {

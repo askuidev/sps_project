@@ -13,7 +13,7 @@ import AdjustCashModal from './AdjustCashModal';
 import {
   TargetAllocationProps,
   TargetAllocationState,
-  ChangeAllocationData
+  TableCellProps
 } from '../types';
 
 class TargetAllocationTable extends React.Component<
@@ -51,13 +51,11 @@ class TargetAllocationTable extends React.Component<
     this.props.handleAdjustCashModal({ type: 'open', data });
   }
   // dispatching the function to update allocationData on change of percentage and price fields
-  onDataChange = ({ value, id, field }: ChangeAllocationData, callback: () => void) => {
+  onDataChange = (data: TableCellProps, callback: () => void) => {
     const { allocationData } = this.props;
-    const updateSuccess = this.props.updateAllocationTargetData(allocationData, { value, id, field });
-    updateSuccess.then(() => {
-      callback();
-      this.props.getAllocationData();
-    });
+    const { value, id, field } = data;
+    this.props.updateAllocationTargetData(allocationData, { value, id, field });
+    callback();
   }
   // subheader for the panel heading, subheader can be any content
   getSubHeader() {

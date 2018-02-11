@@ -1,52 +1,18 @@
-import config from '../config';
 import utils from '../utils';
-import { AssetDataProps } from '../types';
+import {
+  AllocationDataProps,
+  AssetDataProps,
+  ChangeAllocationData,
+  AdjustCashDataProps,
+  AdjustCashModalEntity,
+  HandleAdjustCashDataProps,
+  ApiResponse
+} from '../types';
 import { Dispatch } from 'redux';
-
-let { baseUrl, allocationDataUrl, assetDataUrl } = config.dev;
-allocationDataUrl = baseUrl+allocationDataUrl;
-assetDataUrl = baseUrl+assetDataUrl;
+import AllocationDataApi from '../api/AllocationDataApi';
+import AssetDataApi from '../api/AssetDataApi';
 
 const { getUpdatedAllocationData, getUpdatedTargetData } = utils;
-
-interface AllocationDataProps {
-  description: string;
-  adjustCash: boolean;
-  actionType: string;
-  actionValue: string;
-  currentPer: string;
-  symbol: string;
-  targetPer: string;
-  value: string;
-  id: string | number;
-  targetPrice: string;
-  buySellPrice: string;
-  driftPer: string;
-}
-
-interface ChangeAllocationDataProps {
-  value: string;
-  id: string;
-  field: string;
-}
-
-interface AdjustCashDataProps {
-  id: string;
-  actionType: string;
-  actionValue: string;
-}
-
-interface HandleAdjustCashProps {
-  type: string;
-  data: HandleAdjustCashDataProps;
-}
-
-interface HandleAdjustCashDataProps {
-  actionType?: string;
-  actionValue?: string;
-  id?: string | number;
-  allocationId?: string | number;
-}
 
 export type Action =
   | {
@@ -67,6 +33,14 @@ export type Action =
     }
   | {
       type: 'UPDATE_ALLOCATION_DATA',
+      payload: Promise<{}>
+    }
+  | {
+      type: 'UPDATE_ALLOCATION_DATA_SUCCESS',
+      payload: AllocationDataProps[]
+    }
+  | {
+      type: 'RESET_ALLOCATION_DATA_SUCCESS',
       payload: AllocationDataProps[]
     }
   | {
@@ -75,7 +49,7 @@ export type Action =
     }
   | {
       type: 'UPDATE_ALLOCATION_TARGET_DATA_SUCCESS',
-      payload: Promise<{}>
+      payload: AllocationDataProps[]
     }
   | {
       type: 'CLEAR_ADJUST_CASH_DATA',
@@ -93,94 +67,90 @@ export type Action =
 export const GET_ALLOCATION_DATA = 'GET_ALLOCATION_DATA';
 export const GET_ALLOCATION_DATA_SUCCESS = 'GET_ALLOCATION_DATA_SUCCESS';
 export const GET_ALLOCATION_DATA_FAIL = 'GET_ALLOCATION_DATA_FAIL';
+export function loadedAllocationData(response: ApiResponse) {
+  if (response.type === "success") {
+    return {
+      type: GET_ALLOCATION_DATA_SUCCESS,
+      payload: response.data
+    };
+  } else {
+    return {
+      type: GET_ALLOCATION_DATA_FAIL,
+      payload: response.error
+    };
+  }
+}
 export function getAllocationData() {
-	return function(dispatch: Dispatch<{}>) {
-		return fetch(allocationDataUrl)
-      .then(response => response.json())
-			.then(response => {
-				dispatch({
-          type: GET_ALLOCATION_DATA_SUCCESS,
-          payload: response
-        });
-			})
-			.catch(err => {
-        dispatch({
-          type: GET_ALLOCATION_DATA_FAIL,
-          payload: err
-        });
-			});
-	};
+  return (dispatch: Dispatch<{}>) => {
+    return AllocationDataApi.loadAllocationData().then((response: ApiResponse) => {
+      dispatch(loadedAllocationData(response));
+    })
+  };
 }
 
 export const GET_ASSET_DATA = 'GET_ASSET_DATA';
 export const GET_ASSET_DATA_SUCCESS = 'GET_ASSET_DATA_SUCCESS';
 export const GET_ASSET_DATA_FAIL = 'GET_ASSET_DATA_FAIL';
-export function getAssetData() {
-	return function(dispatch: Dispatch<{}>) {
-		return fetch(assetDataUrl)
-      .then(response => response.json())
-			.then(response => {
-				dispatch({
-          type: GET_ASSET_DATA_SUCCESS,
-          payload: response
-        });
-			})
-			.catch(err => {
-        dispatch({
-          type: GET_ASSET_DATA_FAIL,
-          payload: err
-        });
-			});
-	};
+export function loadedAssetData(response: ApiResponse) {
+  if (response.type === "success") {
+    return {
+      type: GET_ASSET_DATA_SUCCESS,
+      payload: response.data
+    };
+  } else {
+    return {
+      type: GET_ASSET_DATA_FAIL,
+      payload: response.error
+    };
+  }
 }
-
-export const UPDATE_ALLOCATION_DATA = 'UPDATE_ALLOCATION_DATA';
-export const updateAllocationData = (
-  allocationData: AllocationDataProps[],
-  data: AdjustCashDataProps
-): Action => {
-  const updatedAllocationData = getUpdatedAllocationData(allocationData, data);
-  return {
-    type: UPDATE_ALLOCATION_DATA,
-    payload: updatedAllocationData
+export function getAssetData() {
+  return (dispatch: Dispatch<{}>) => {
+    return AssetDataApi.loadAssetData().then((response: ApiResponse) => {
+      dispatch(loadedAssetData(response));
+    })
   };
-};
+}
 
 export const UPDATE_ALLOCATION_TARGET_DATA = 'UPDATE_ALLOCATION_TARGET_DATA';
 export const UPDATE_ALLOCATION_TARGET_DATA_SUCCESS =
   'UPDATE_ALLOCATION_TARGET_DATA_SUCCESS';
 export const UPDATE_ALLOCATION_TARGET_DATA_FAIL =
   'UPDATE_ALLOCATION_TARGET_DATA_FAIL';
+export function loadedUpdatedAllocationTargetData(response: AllocationDataProps[]) {
+  return {
+    type: UPDATE_ALLOCATION_TARGET_DATA_SUCCESS,
+    payload: response
+  };
+}
 export function updateAllocationTargetData(
   allocationData: AllocationDataProps[],
-  data: ChangeAllocationDataProps
+  data: ChangeAllocationData
 ) {
-	return function(dispatch: Dispatch<{}>) {
-    const updatedTargetData = getUpdatedTargetData(allocationData, data);
-		return fetch(allocationDataUrl+"/"+data.id, {
-        method: 'PUT',
-        body: JSON.stringify(updatedTargetData[0]),
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => response.json())
-			.then(response => {
-				dispatch({
-          type: GET_ASSET_DATA_SUCCESS,
-          payload: response
-        });
-			})
-			.catch(err => {
-        dispatch({
-          type: GET_ASSET_DATA_FAIL,
-          payload: err
-        });
-			});
-	};
+  const updatedTargetData = getUpdatedTargetData(allocationData, data);
+  return (dispatch: Dispatch<{}>) => {
+    dispatch(loadedUpdatedAllocationTargetData(updatedTargetData));
+  };
 }
+
+export const UPDATE_ALLOCATION_DATA = 'UPDATE_ALLOCATION_DATA';
+export const UPDATE_ALLOCATION_DATA_SUCCESS = 'UPDATE_ALLOCATION_DATA_SUCCESS';
+export const UPDATE_ALLOCATION_DATA_FAIL = 'UPDATE_ALLOCATION_DATA_FAIL';
+export function loadedUpdateAllocationData(updatedAllocationData: AllocationDataProps[]) {
+  return {
+    type: UPDATE_ALLOCATION_DATA_SUCCESS,
+    payload: updatedAllocationData
+  };
+}
+export function updateAllocationData(
+  allocationData: AllocationDataProps[],
+  data: AdjustCashDataProps
+) {
+  const updatedAllocationData = getUpdatedAllocationData(allocationData, data);
+  return (dispatch: Dispatch<{}>) => {
+    dispatch(loadedUpdateAllocationData(updatedAllocationData));
+  }
+};
 
 export const CLEAR_ADJUST_CASH_DATA = 'CLEAR_ADJUST_CASH_DATA';
 export const clearAdjustCashData = (): Action => ({
@@ -190,7 +160,7 @@ export const clearAdjustCashData = (): Action => ({
 
 export const SHOW_ADJUST_CASH_MODAL = 'SHOW_ADJUST_CASH_MODAL';
 export const HIDE_ADJUST_CASH_MODAL = 'HIDE_ADJUST_CASH_MODAL';
-export const handleAdjustCashModal = ({type, data}: HandleAdjustCashProps): Action => {
+export const handleAdjustCashModal = ({type, data}: AdjustCashModalEntity): Action => {
   if (type === 'open') {
     return {
       type: SHOW_ADJUST_CASH_MODAL,

@@ -1,5 +1,4 @@
-// PropTypes for TableRow Data
-export interface TableRowDataProps {
+export interface AllocationDataProps {
   description: string;
   adjustCash: boolean;
   actionType: string;
@@ -8,17 +7,26 @@ export interface TableRowDataProps {
   symbol: string;
   targetPer: string;
   value: string;
-  id: string | number;
+  id: AllocationId;
   targetPrice: string;
   buySellPrice: string;
   driftPer: string;
 }
 
+export interface AllocationId {
+  id: number | string;
+}
+
+export interface GetStyleProps {
+  prop: string;
+  value: string | number;
+}
+
 export interface HandleAdjustCashDataProps {
   actionType?: string;
   actionValue?: string;
-  id?: string | number;
-  allocationId?: string | number;
+  id?: AllocationId;
+  allocationId?: AllocationId;
 }
 
 // PropTypes for TargetAllocationTable component
@@ -26,11 +34,11 @@ export interface TargetAllocationProps {
   getAllocationData: () => Promise<{}>;
   handleAdjustCashModal: (props: AdjustCashModalEntity) => void;
   updateAllocationTargetData: (
-    allocationData: TableRowDataProps[],
+    allocationData: AllocationDataProps[],
     props: ChangeAllocationData
   ) => Promise<{}>;
-  allocationData: TableRowDataProps[];
-  allocationId: string;
+  allocationData: AllocationDataProps[];
+  allocationId: AllocationId;
   showAdjustCashModal: boolean;
 }
 
@@ -49,7 +57,7 @@ export interface AdjustCashModalEntity {
 // PropTypes for changed allocationData fields
 export interface ChangeAllocationData {
   value: string;
-  id: string;
+  id: AllocationId;
   field: string;
 }
 
@@ -78,11 +86,16 @@ export interface CallbackProps {
   (param1: object, param2?: () => void): void;
 }
 
+// PropTypes for callback function
+export interface CbProps {
+  callback: () => void
+}
+
 // PropTypes for TableRow component props
 export interface TableRowEntity {
-  rowData?: TableRowDataProps;
+  rowData?: AllocationDataProps;
   fieldType?: string;
-  onAdjustCashClick?: (rowData: TableRowDataProps) => void;
+  onAdjustCashClick?: (rowData: AllocationDataProps) => void;
   onDataChange?: CallbackProps;
 }
 
@@ -104,7 +117,7 @@ export interface MyFormEvent extends React.FormEvent<HTMLInputElement> {
 
 // PropTypes for TableFooter component props
 export interface TableFooterProps {
-  allocationData?: TableRowDataProps[];
+  allocationData?: AllocationDataProps[];
   searchText?: string;
 }
 
@@ -123,9 +136,9 @@ export interface TableControlsProps {
 
 // PropTypes for TableCel of TableBody
 export interface TableCellProps {
-  value?: string;
-  id?: string | number;
-  field?: string;
+  value: string;
+  id: AllocationId;
+  field: string;
 }
 
 export interface TableBodyCallbackProps {
@@ -134,9 +147,9 @@ export interface TableBodyCallbackProps {
 
 // PropTypes for TableBody component props
 export interface TableBodyProps {
-  allocationData?: TableRowDataProps[];
+  allocationData?: AllocationDataProps[];
   fieldType?: string;
-  onAdjustCashClick?: (allocationData: TableRowDataProps) => void;
+  onAdjustCashClick?: (allocationData: AllocationDataProps) => void;
   onDataChange?: TableBodyCallbackProps;
 }
 
@@ -154,8 +167,8 @@ export interface TableCallbackProps {
 export interface TableProps {
   tableClass?: string;
   fieldType?: string;
-  allocationData: TableRowDataProps[];
-  onAdjustCashClick?: (params: TableRowDataProps) => void;
+  allocationData: AllocationDataProps[];
+  onAdjustCashClick?: (params: AllocationDataProps) => void;
   onDataChange?: TableCallbackProps;
 }
 
@@ -206,7 +219,7 @@ export interface ModalProps {
 
 // PropTypes for Checkbox component props
 export interface CheckboxProps {
-  id?: string | number;
+  id?: AllocationId;
   label?: string;
   mainClass?: string;
   onChange?: (id: string | number, e: object) => void;
@@ -242,7 +255,7 @@ export interface AdjustCashFormProps {
 
 // PropTypes for AdjustCash Data props
 export interface AdjustCashDataProps {
-  id: string | number;
+  id: AllocationId;
   actionType: string;
   actionValue: string;
 }
@@ -255,13 +268,13 @@ export interface HandleAdjustCashModalProps {
 
 // PropTypes for AdjustCashModal component props
 export interface AdjustCashModalProps {
-  allocationData: TableRowDataProps[];
+  allocationData: AllocationDataProps[];
   adjustCashData: AdjustCashDataProps;
-  allocationId: string | number;
+  allocationId: AllocationId;
   mainClass: string;
   showAdjustCashModal: boolean;
   handleAdjustCashModal: (props: HandleAdjustCashModalProps) => void;
-  updateAllocationData: (allocationData: TableRowDataProps[], props: AdjustCashDataProps) => Promise<{}>;
+  updateAllocationData: (allocationData: AllocationDataProps[], props: AdjustCashDataProps) => Promise<{}>;
   getAllData: () => Promise<{}>;
   getAdjustCashData: () => {};
 }
@@ -273,13 +286,23 @@ export interface AdjustCashModalState {
 }
 
 export interface InitialStateProps {
-  allocationData: TableRowDataProps[];
+  allocationData: AllocationDataProps[];
   assetData: AssetDataProps[];
-  allocationId?: string | number;
+  allocationId?: AllocationId;
   showAdjustCashModal: boolean;
   adjustCashData: AdjustCashModalState;
 }
 
 export interface MyLinkEvent {
   preventDefault: () => void
+}
+
+export interface ApiResponse {
+  type?: string;
+  data?: object;
+  error?: object;
+}
+
+export interface ValidTargetPercent {
+  isValid?: boolean;
 }

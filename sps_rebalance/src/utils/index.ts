@@ -1,34 +1,9 @@
-interface AllocationDataProps {
-    description: string;
-    adjustCash: boolean;
-    actionType: string;
-    actionValue: string;
-    currentPer: string;
-    symbol: string;
-    targetPer: string;
-    value: string;
-    id: string | number;
-    targetPrice: string;
-    buySellPrice: string;
-    driftPer: string;
-}
-
-interface ChangeAllocationData {
-    value: string;
-    id: string;
-    field: string;
-}
-
-interface AdjustCashDataProps {
-    id: string;
-    actionType: string;
-    actionValue: string;
-}
-
-interface GetStyleProps {
-    prop: string;
-    value: string | number;
-}
+import {
+  AllocationDataProps,
+  ChangeAllocationData,
+  AdjustCashDataProps,
+  GetStyleProps
+} from '../types';
 
 /**
  * getCalculatedTotal - Get the sum of [field]s in the allocationData array
@@ -78,7 +53,6 @@ export const doAllCalculations = (arr: AllocationDataProps[]) => {
  * @returns {type} updated allocationData with adjustCash data
  */
 export const getUpdatedAllocationData = (arr: AllocationDataProps[], data?: AdjustCashDataProps) => {
-    console.log(data);
     const updatedArr = arr.filter((obj) => {
         if (data && ( data.id === obj.id )) {
             obj.actionType = data.actionType;
@@ -110,7 +84,7 @@ export const getUpdatedTargetData = (arr: AllocationDataProps[], data: ChangeAll
             obj[data.field] = data.value;
             return true;
         }
-        return false;
+        return true;
     });
 };
 

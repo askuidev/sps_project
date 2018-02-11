@@ -2,10 +2,11 @@ import * as React from 'react';
 import Checkbox from '../Checkbox';
 import { getStyle } from '../../../utils';
 import {
-  TableRowDataProps,
+  AllocationDataProps,
   TableRowEntity,
   TableRowState,
-  MyFormEvent
+  MyFormEvent,
+  AllocationId
 } from '../../../types';
 
 class TableRow extends React.Component<TableRowEntity, TableRowState> {
@@ -47,7 +48,7 @@ class TableRow extends React.Component<TableRowEntity, TableRowState> {
     }
   }
   // adding link to adjust cash label if rowData contains adjustCash setting true
-  getAdjustCash(rowData: TableRowDataProps) {
+  getAdjustCash(rowData: AllocationDataProps) {
     if (!rowData) {
       return null;
     }
@@ -73,7 +74,7 @@ class TableRow extends React.Component<TableRowEntity, TableRowState> {
     );
   }
   // get input box for the targetPer field
-  getTargetPerInput(id: string | number) {
+  getTargetPerInput(id: AllocationId) {
     return (
       <input
         type="number"
@@ -84,7 +85,7 @@ class TableRow extends React.Component<TableRowEntity, TableRowState> {
     );
   }
   // callback function to handle the changed data in the targetper input field
-  onTargetPerChange = (id: string | number, e: MyFormEvent) => {
+  onTargetPerChange = (id: AllocationId, e: MyFormEvent) => {
     const { onDataChange } = this.props;
     const field = 'targetPer';
     const value = e.target.value ? parseFloat(e.target.value) : '';
@@ -98,7 +99,7 @@ class TableRow extends React.Component<TableRowEntity, TableRowState> {
     }
   }
   // get input box for the targetPrice field
-  getTargetPriceInput(rowData: TableRowDataProps) {
+  getTargetPriceInput(rowData: AllocationDataProps) {
     const { id, targetPrice } = rowData;
     return (
       <input
@@ -110,7 +111,7 @@ class TableRow extends React.Component<TableRowEntity, TableRowState> {
     );
   }
   // callback function to handle the changed data in the targetPrice input field
-  onTargetPriceChange = (id: string | number, e: MyFormEvent) => {
+  onTargetPriceChange = (id: AllocationId, e: MyFormEvent) => {
     const { onDataChange } = this.props;
     const field = 'targetPrice';
     const value = e.target.value ? parseFloat(e.target.value) : '';
@@ -124,7 +125,7 @@ class TableRow extends React.Component<TableRowEntity, TableRowState> {
     }
   }
   // get the checkbox for targetPer field
-  getTargetCheckbox(rowData: TableRowDataProps) {
+  getTargetCheckbox(rowData: AllocationDataProps) {
     return <Checkbox id={rowData.id} />;
   }
   render() {
