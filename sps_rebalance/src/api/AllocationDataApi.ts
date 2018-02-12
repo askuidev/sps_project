@@ -1,11 +1,17 @@
-// import config from '../config';
+import { defaultHeaders } from './Constants';
+import { getAllocationDataUrl } from './Utils';
 import { AllocationDataProps, AllocationId } from '../types';
-// let { baseUrl, allocationDataUrl } = config.dev;
-// allocationDataUrl = baseUrl+allocationDataUrl;
 
 class AllocationDataApi {
   static async loadAllocationData() {
-    return await fetch('/allocationData')
+    const accId = '000000000';
+    return await fetch(getAllocationDataUrl(accId), {
+        method: 'GET',
+        headers: defaultHeaders,
+        cache: 'no-store',
+        mode: 'cors',
+        credentials: 'include'
+    })
     .then(response => response.json())
     .then(response => {
       return {

@@ -1,20 +1,33 @@
-/**
- * this file contains the configation for our project
- * @type - dev - which means this urls can be used only development purpose
- *
- * @returns {object containing baseUrl, allocationDataUrl, assetDataUrl}
- */
+const config = (window as any).spsAppConfig;
 
-const baseUrl = `http://localhost:5000`;
+if (!config) {
+    console.log('ERROR.... NO CONFIG PRESENT!!!');
+}
 
-const config = {
-    'dev': {
-        baseUrl: baseUrl,
-        allocationData: '/allocationData',
-        allocationDataUrl: '/allocationData',
-        assetData: '/assetData',
-        assetDataUrl: '/assetData'
+class AppConfig {
+
+    get isAvailable() {
+        return config != null;
     }
-};
 
-export default config;
+    getRequired(name: string): any | undefined {
+        const answer = config[name];
+        if (answer === undefined) {
+            throw new Error('Unable to find required config property "' + name + '"');
+        }
+        return answer;
+    }
+
+    getWithDefault(name: string, defaultValue: any): any {
+        const answer = config[name];
+        if (answer === undefined ) {
+            return defaultValue;
+        }
+        return answer;
+    }
+
+}
+
+const appConfig = new AppConfig();
+
+export default appConfig;
